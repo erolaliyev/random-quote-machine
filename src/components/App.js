@@ -1,6 +1,28 @@
 import React from "react";
 import NewQuote from "./NewQuote";
 import TweetQuote from "./TweetQuote";
+import styled, { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 62.5%;
+  }
+
+  p {
+    font-size: 1.6rem;
+    border: 1px solid red;
+    width: 75%;
+  }
+`;
+
+const AppWrapper = styled.div``;
 
 const quotes = [
   `I hated every minute of training, but I said, "Don't quite. Suffer now and live the rest of your life as a champion."`,
@@ -102,23 +124,22 @@ export default class App extends React.Component {
     document.querySelector("body").style.background =
       backgroundColors[this.state.secondRandomNumber];
     return (
-      <div id="quote-box">
-        <p id="text">
+      <AppWrapper>
+        <GlobalStyle />
+        <p>
           <i className="fas fa-quote-left" />
           {quotes[this.state.firstRandomNumber]}
         </p>
-        <p id="author">{authors[this.state.firstRandomNumber]}</p>
-        <div id="button-wrapper">
-          <TweetQuote
-            href={`https://twitter.com/intent/tweet?text=${
-              quotes[this.state.firstRandomNumber]
-            } ${
-              authors[this.state.firstRandomNumber]
-            } %23randomquotemachine %23freeCodeCamp`}
-          />
-          <NewQuote handleNewQuote={this.handleNewQuote} />
-        </div>
-      </div>
+        <p>{authors[this.state.firstRandomNumber]}</p>
+        <TweetQuote
+          href={`https://twitter.com/intent/tweet?text=${
+            quotes[this.state.firstRandomNumber]
+          } ${
+            authors[this.state.firstRandomNumber]
+          } %23randomquotemachine %23freeCodeCamp`}
+        />
+        <NewQuote handleNewQuote={this.handleNewQuote} />
+      </AppWrapper>
     );
   }
 }
