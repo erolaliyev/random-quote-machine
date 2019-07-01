@@ -80,14 +80,12 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    /* align-items: center; */
     padding: 0;
     margin: 0;
     font-family: 'Cormorant Garamond', serif;
     font-size: 2.5rem;
     width: 100%;
     box-sizing: border-box;
-    /* border: 3px solid red; */
     height: 100%;
   }
 
@@ -102,7 +100,6 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const AppWrapper = styled.div`
-  /* border: 1px solid red; */
   width: 60%;
   margin: 10rem auto 0 auto;
   display: flex;
@@ -115,7 +112,6 @@ const AppWrapper = styled.div`
 `;
 
 const Quote = styled.p`
-  /* border: 1px orange dashed; */
   width: 80%;
   margin: 0 auto;
   text-align: center;

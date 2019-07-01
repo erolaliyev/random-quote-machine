@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const FontAwesome = styled.i`
   color: black;
-  /* font-size: 2.5rem; */
 `;
 
 const TweetQuote = props => (
