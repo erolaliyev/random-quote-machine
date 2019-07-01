@@ -1,6 +1,6 @@
 # Random Quote Machine
 
-![Random Quote Machine](https://github.com/erolaliyev/random-quote-machine/blob/master/images/random%20quote%20machine.png)
+![Random Quote Machine](https://github.com/erolaliyev/random-quote-machine/blob/master/dist/images/random%20quote%20machine.png)
 
 - User stories:
 
