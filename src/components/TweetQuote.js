@@ -1,4 +1,10 @@
 import React from "react";
+import styled from "styled-components";
+
+const FontAwesome = styled.i`
+  color: black;
+  /* font-size: 2.5rem; */
+`;
 
 const TweetQuote = props => (
   <div>
@@ -8,7 +14,7 @@ const TweetQuote = props => (
       target="_blank"
       href={props.href}
     >
-      <i className="fab fa-twitter" />
+      <FontAwesome className="fab fa-twitter fa-lg" />
     </a>
   </div>
 );

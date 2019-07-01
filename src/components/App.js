@@ -2,27 +2,7 @@ import React from "react";
 import NewQuote from "./NewQuote";
 import TweetQuote from "./TweetQuote";
 import styled, { createGlobalStyle } from "styled-components";
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 62.5%;
-  }
-
-  p {
-    font-size: 1.6rem;
-    border: 1px solid red;
-    width: 75%;
-  }
-`;
-
-const AppWrapper = styled.div``;
+import "normalize.css";
 
 const quotes = [
   `I hated every minute of training, but I said, "Don't quite. Suffer now and live the rest of your life as a champion."`,
@@ -92,6 +72,88 @@ const backgroundColors = [
   "linear-gradient( 135deg, #FFF720 10%, #3CD500 100%)"
 ];
 
+const GlobalStyle = createGlobalStyle`
+  html {
+    font-size: 62.5%;
+  }
+  body {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    /* align-items: center; */
+    padding: 0;
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    /* border: 3px solid red; */
+    height: 100%;
+  }
+
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
+  button:focus {
+    outline: none;
+  }
+`;
+
+const AppWrapper = styled.div`
+  /* border: 1px solid red; */
+  width: 60%;
+  margin: 10rem auto 0 auto;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+
+  @media (max-width: 425px) {
+    width: 95%;
+  }
+`;
+
+const Quote = styled.p`
+  /* border: 1px orange dashed; */
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+
+  @media (max-width: 425px) {
+    width: 95%;
+  }
+`;
+
+const Author = styled.p`
+  text-align: right;
+  width: 60%;
+  font-style: italic;
+  padding: 0;
+  margin: 3% auto;
+
+  @media (max-width: 425px) {
+    width: 85%;
+    margin: 7% auto;
+  }
+
+  @media (max-width: 375px) {
+    margin: 10% auto;
+  }
+`;
+
+const ButtonBox = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  @media (max-width: 425px) {
+    width: 95%;
+  }
+`;
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -124,21 +186,21 @@ export default class App extends React.Component {
     document.querySelector("body").style.background =
       backgroundColors[this.state.secondRandomNumber];
     return (
-      <AppWrapper>
+      <AppWrapper id="quote-box">
         <GlobalStyle />
-        <p>
-          <i className="fas fa-quote-left" />
-          {quotes[this.state.firstRandomNumber]}
-        </p>
-        <p>{authors[this.state.firstRandomNumber]}</p>
-        <TweetQuote
-          href={`https://twitter.com/intent/tweet?text=${
-            quotes[this.state.firstRandomNumber]
-          } ${
-            authors[this.state.firstRandomNumber]
-          } %23randomquotemachine %23freeCodeCamp`}
-        />
-        <NewQuote handleNewQuote={this.handleNewQuote} />
+        <Quote id="text">{quotes[this.state.firstRandomNumber]}</Quote>
+        <Author id="author">{authors[this.state.firstRandomNumber]}</Author>
+        <ButtonBox>
+          <TweetQuote
+            id="tweet-quote"
+            href={`https://twitter.com/intent/tweet?text=${
+              quotes[this.state.firstRandomNumber]
+            } ${
+              authors[this.state.firstRandomNumber]
+            } %23randomquotemachine %23freeCodeCamp`}
+          />
+          <NewQuote id="new-quote" handleNewQuote={this.handleNewQuote} />
+        </ButtonBox>
       </AppWrapper>
     );
   }

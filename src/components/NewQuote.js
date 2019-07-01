@@ -1,10 +1,19 @@
 import React from "react";
+import styled from "styled-components";
+
+const Button = styled.button`
+  color: black;
+  border: none;
+  background: transparent;
+  font-size: 2.2rem;
+  cursor: pointer;
+`;
 
 const NewQuote = props => (
   <div>
-    <button id="new-quote" onClick={props.handleNewQuote}>
+    <Button id="new-quote" onClick={props.handleNewQuote}>
       New quote
-    </button>
+    </Button>
   </div>
 );
 
